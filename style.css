@@ -1,110 +1,479 @@
 :root {
-    /* Cor principal (azul similar ao estilo Digitro) */
-    --primary: #0057B8;       /* azul escuro principal */
-    --primary-2: #4DA8FF;     /* azul claro para gradientes */
-    --background-overlay: rgba(255, 255, 255, 0.8);
-    --text: #222222;
-    --muted: #555;
-    --shadow: rgba(0, 0, 0, 0.12);
+    /* Paleta principal (azul Digitro-like) */
+    --primary: #0057B8;
+    --primary-2: #4DA8FF;
+    --bg-start: #003f7f;
+    --bg-mid: #1b6fbf;
+    --bg-end: #4da8ff;
+
+    --card-bg: rgba(255,255,255,0.90);
+    --card-text: #07253a;
+    --muted: #4b6574;
+    --shadow: rgba(6,24,42,0.12);
+    --radius: 12px;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-image: url(background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     margin: 0;
     min-height: 100vh;
-    color: var(--text);
+    /* Fundo em gradiente azul (considerando que você quer um gradiente azul) */
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    background-attachment: fixed;
+    color: var(--card-text);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding: 28px 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Estilo "card" aplicado aos blocos de conteúdo para melhor leitura */
+h1,
+p,
+address,
+table,
+ul,
+footer,
+img {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px var(--shadow);
+    max-width: 980px;
+    width: calc(100% - 40px);
+    margin: 18px auto;
+    padding: 16px 20px;
+}
+
+/* Cabeçalho alto contraste, mantendo legibilidade */
 h1 {
-    background: rgba(77,168,255,0.12);
-    padding: 20px 40px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px var(--shadow);
-    margin-top: 40px;
+    background: linear-gradient(180deg, rgba(77,168,255,0.14), rgba(0,87,184,0.06));
+    color: var(--primary);
+    padding: 20px 28px;
     font-size: 2rem;
     text-align: center;
-    color: var(--primary);
     border: 1px solid rgba(0,87,184,0.12);
 }
 
-a { 
+/* Links - preservam o azul, com foco visível */
+a {
     text-decoration: none;
     color: var(--primary);
-    font-weight: bold;
-    margin: 16px 0;
+    font-weight: 600;
     display: inline-block;
+    margin: 12px 0;
 }
 
 a:focus,
 a:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.25);
+    outline: 3px solid rgba(77,168,255,0.22);
     border-radius: 6px;
 }
 
+/* Botões com contraste suficiente sobre cards */
 button {
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
     color: #fff;
     border: none;
     border-radius: 8px;
-    padding: 12px 28px;
+    padding: 10px 22px;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    transition: background 0.25s ease, transform 0.08s ease;
+    box-shadow: 0 6px 14px rgba(3,48,89,0.15);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 button:hover {
-    background: linear-gradient(90deg, var(--primary-2) 0%, var(--primary) 100%);
-    transform: translateY(-1px);
-}
-
-button:active {
-    transform: translateY(0);
+    transform: translateY(-2px);
 }
 
 button:focus,
 button:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.25);
+    outline: 3px solid rgba(77,168,255,0.20);
 }
 
+/* Imagem com aparência de cartão (mantém padding e sombra) */
 img {
+    display: block;
     max-width: 90vw;
     height: auto;
-    margin: 32px 0;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px var(--shadow);
-    background: var(--background-overlay);
+    margin: 18px auto;
     padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 26px rgba(6,24,42,0.12);
 }
 
+/* Tabelas com melhor legibilidade e responsividade */
 table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
-    margin: 12px 0 32px;
+    margin: 12px 0;
+    font-size: 0.98rem;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 th, td {
     padding: 10px;
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
     text-align: center;
+    color: var(--card-text);
+    background: rgba(255,255,255,0.98);
 }
 
 th {
     background: linear-gradient(180deg, rgba(77,168,255,0.12), rgba(0,87,184,0.06));
     color: var(--primary);
-    font-weight: 600;
+    font-weight: 700;
 }
 
-@media (max-width: 800px) {
-    h1 { font-size: 1.6rem; padding: 16px 24px; }
-    table { width: 90%; font-size: 0.95rem; }
+/* Footer menor e mais discreto */
+footer {
+    font-size: 0.87rem;
+    line-height: 1.4;
+    padding: 12px 16px;
+}
+
+/* Pequenas melhorias responsivas */
+@media (max-width: 900px) {
+    h1 { font-size: 1.6rem; padding: 14px 18px; }
+    table { font-size: 0.95rem; }
     img { max-width: 95vw; }
+    h1, p, address, table, ul, footer, img { width: calc(100% - 32px); }
+}
+
+/* Evitar que elementos dentro dos "cards" fiquem com margem duplicada */
+p + p, address + p, h3 + p {
+    margin-top: 8px;
+}
+
+/* Acessibilidade: contraste de links dentro dos cards */
+a:visited { color: #003f7f; }
+cat > /workspaces/Curriculo-Gabriel/style.css <<'CSS'
+:root {
+    /* Paleta principal (azul Digitro-like) */
+    --primary: #0057B8;
+    --primary-2: #4DA8FF;
+    --bg-start: #003f7f;
+    --bg-mid: #1b6fbf;
+    --bg-end: #4da8ff;
+
+    --card-bg: rgba(255,255,255,0.90);
+    --card-text: #07253a;
+    --muted: #4b6574;
+    --shadow: rgba(6,24,42,0.12);
+    --radius: 12px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    /* Fundo em gradiente azul (considerando que você quer um gradiente azul) */
+    background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+    background-attachment: fixed;
+    color: var(--card-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 28px 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilo "card" aplicado aos blocos de conteúdo para melhor leitura */
+h1,
+p,
+address,
+table,
+ul,
+footer,
+img {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px var(--shadow);
+    max-width: 980px;
+    width: calc(100% - 40px);
+    margin: 18px auto;
+    padding: 16px 20px;
+}
+
+/* Cabeçalho alto contraste, mantendo legibilidade */
+h1 {
+    background: linear-gradient(180deg, rgba(77,168,255,0.14), rgba(0,87,184,0.06));
+    color: var(--primary);
+    padding: 20px 28px;
+    font-size: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0,87,184,0.12);
+}
+
+/* Links - preservam o azul, com foco visível */
+a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    display: inline-block;
+    margin: 12px 0;
+}
+
+a:focus,
+a:focus-visible {
+    outline: 3px solid rgba(77,168,255,0.22);
+    border-radius: 6px;
+}
+
+/* Botões com contraste suficiente sobre cards */
+button {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(3,48,89,0.15);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 3px solid rgba(77,168,255,0.20);
+}
+
+/* Imagem com aparência de cartão (mantém padding e sombra) */
+img {
+    display: block;
+    max-width: 90vw;
+    height: auto;
+    margin: 18px auto;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 26px rgba(6,24,42,0.12);
+}
+
+/* Tabelas com melhor legibilidade e responsividade */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.98rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    text-align: center;
+    color: var(--card-text);
+    background: rgba(255,255,255,0.98);
+}
+
+th {
+    background: linear-gradient(180deg, rgba(77,168,255,0.12), rgba(0,87,184,0.06));
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Footer menor e mais discreto */
+footer {
+    font-size: 0.87rem;
+    line-height: 1.4;
+    padding: 12px 16px;
+}
+
+/* Pequenas melhorias responsivas */
+@media (max-width: 900px) {
+    h1 { font-size: 1.6rem; padding: 14px 18px; }
+    table { font-size: 0.95rem; }
+    img { max-width: 95vw; }
+    h1, p, address, table, ul, footer, img { width: calc(100% - 32px); }
+}
+
+/* Evitar que elementos dentro dos "cards" fiquem com margem duplicada */
+p + p, address + p, h3 + p {
+    margin-top: 8px;
+}
+
+/* Acessibilidade: contraste de links dentro dos cards */
+a:visited { color: #003f7f; }
+cat > /workspaces/Curriculo-Gabriel/style.css <<'CSS'
+:root {
+    /* Paleta */
+    --primary: #0057B8;
+    --primary-2: #4DA8FF;
+
+    /* Cards escuros translúcidos para legibilidade sobre fundo gradiente PNG */
+    --card-bg: rgba(3,16,30,0.66);
+    --card-text: #ffffff;
+    --muted: rgba(255,255,255,0.82);
+    --shadow: rgba(0,0,0,0.36);
+    --radius: 12px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    /* Mantém a imagem de fundo (gradiente em PNG) */
+    background-image: url(background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--card-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 28px 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aplica o "card" escuro translúcido para melhorar contraste */
+h1,
+p,
+address,
+table,
+ul,
+footer,
+img {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 28px var(--shadow);
+    max-width: 980px;
+    width: calc(100% - 40px);
+    margin: 18px auto;
+    padding: 16px 20px;
+}
+
+/* Cabeçalho com destaque, texto branco */
+h1 {
+    background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));
+    color: var(--card-text);
+    padding: 20px 28px;
+    font-size: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Links: azul para identidade, mas com boa visibilidade sobre card escuro */
+a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    display: inline-block;
+    margin: 12px 0;
+}
+
+a:visited { color: #003f7f; }
+
+a:focus,
+a:focus-visible {
+    outline: 3px solid rgba(77,168,255,0.18);
+    border-radius: 6px;
+}
+
+/* Botões: mantêm azul, com sombra mais forte para destacar sobre fundo escuro */
+button {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.42);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 3px solid rgba(77,168,255,0.18);
+}
+
+/* Imagens: mantém padding e sombra; fundo das imagens fica mais leve */
+img {
+    display: block;
+    max-width: 90vw;
+    height: auto;
+    margin: 18px auto;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.38);
+}
+
+/* Tabelas com cores claras sobre o card escuro */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.98rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    color: var(--card-text);
+    background: rgba(255,255,255,0.02);
+}
+
+th {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    color: var(--muted);
+    font-weight: 700;
+}
+
+/* Footer menor e mais discreto */
+footer {
+    font-size: 0.88rem;
+    line-height: 1.4;
+    padding: 12px 16px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    h1 { font-size: 1.6rem; padding: 14px 18px; }
+    table { font-size: 0.95rem; }
+    img { max-width: 95vw; }
+    h1, p, address, table, ul, footer, img { width: calc(100% - 32px); }
+}
+
+/* Pequenos ajustes de espaçamento */
+p + p, address + p, h3 + p {
+    margin-top: 8px;
 }
