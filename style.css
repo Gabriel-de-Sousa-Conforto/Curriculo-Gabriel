@@ -1,9 +1,9 @@
 :root {
-    /* Paleta */
+   
     --primary: #0057B8;
     --primary-2: #4DA8FF;
 
-    /* Cards escuros translúcidos para legibilidade sobre fundo gradiente PNG */
+   
     --card-bg: rgba(3,16,30,0.66);
     --card-text: #ffffff;
     --muted: rgba(255,255,255,0.82);
@@ -19,7 +19,7 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
-    /* Usa a imagem PNG como está (tamanho normal, não cover) */
+    
     background-image: url(background.png);
     background-size: cover;
     background-attachment: fixed;
@@ -35,7 +35,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Aplica o "card" escuro translúcido para melhorar contraste */
+
 h1,
 p,
 address,
@@ -52,7 +52,7 @@ footer {
     padding: 16px 20px;
 }
 
-/* Cabeçalho com destaque, texto branco */
+
 h1 {
     background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));
     color: var(--card-text);
@@ -62,7 +62,7 @@ h1 {
     border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Links */
+
 a {
     text-decoration: none;
     color: var(--primary);
@@ -79,7 +79,7 @@ a:focus-visible {
     border-radius: 6px;
 }
 
-/* Botões */
+
 button {
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
     color: #fff;
@@ -102,7 +102,7 @@ button:focus-visible {
     outline: 3px solid rgba(77,168,255,0.18);
 }
 
-/* Imagens - estilo base (sombra, padding). Tamanhos controlados por classes. */
+
 img {
     display: block;
     height: auto;
@@ -113,20 +113,20 @@ img {
     box-shadow: 0 10px 30px rgba(0,0,0,0.38);
 }
 
-/* Imagem de perfil reduzida */
+
 .img-small {
     max-width: 160px;
     width: auto;
     padding: 6px;
 }
 
-/* Imagens de certificado maiores */
+
 .img-cert {
     max-width: 480px;
     width: 100%;
 }
 
-/* Tabelas */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -150,14 +150,14 @@ th {
     font-weight: 700;
 }
 
-/* Footer */
+
 footer {
     font-size: 0.88rem;
     line-height: 1.4;
     padding: 12px 16px;
 }
 
-/* Responsividade */
+
 @media (max-width: 900px) {
     h1 { font-size: 1.6rem; padding: 14px 18px; }
     table { font-size: 0.95rem; }
@@ -165,12 +165,12 @@ footer {
     h1, p, address, table, ul, footer { width: calc(100% - 32px); }
 }
 
-/* Pequenos ajustes de espaçamento */
+
 p + p, address + p, h3 + p {
     margin-top: 8px;
 }
 
-/* Links no topo da página (filhos diretos de body) */
+
 body > a {
     color: #ffffff;
     font-weight: 700;
