@@ -19,9 +19,9 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
-    /* Mantém a imagem de fundo (gradiente em PNG) */
+    /* Usa a imagem PNG como está (tamanho normal, não cover) */
     background-image: url(background.png);
-    background-size: cover;
+    background-size: auto;
     background-repeat: no-repeat;
     background-position: center;
     color: var(--card-text);
@@ -40,8 +40,7 @@ p,
 address,
 table,
 ul,
-footer,
-img {
+footer {
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: var(--radius);
@@ -62,7 +61,7 @@ h1 {
     border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Links: azul para identidade, mas com boa visibilidade sobre card escuro */
+/* Links */
 a {
     text-decoration: none;
     color: var(--primary);
@@ -79,7 +78,7 @@ a:focus-visible {
     border-radius: 6px;
 }
 
-/* Botões: mantêm azul, com sombra mais forte para destacar sobre fundo escuro */
+/* Botões */
 button {
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
     color: #fff;
@@ -102,10 +101,9 @@ button:focus-visible {
     outline: 3px solid rgba(77,168,255,0.18);
 }
 
-/* Imagens: mantém padding e sombra; fundo das imagens fica mais leve */
+/* Imagens - estilo base (sombra, padding). Tamanhos controlados por classes. */
 img {
     display: block;
-    max-width: 90vw;
     height: auto;
     margin: 18px auto;
     padding: 12px;
@@ -114,7 +112,20 @@ img {
     box-shadow: 0 10px 30px rgba(0,0,0,0.38);
 }
 
-/* Tabelas com cores claras sobre o card escuro */
+/* Imagem de perfil reduzida */
+.img-small {
+    max-width: 160px;
+    width: auto;
+    padding: 6px;
+}
+
+/* Imagens de certificado maiores */
+.img-cert {
+    max-width: 480px;
+    width: 100%;
+}
+
+/* Tabelas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -138,7 +149,7 @@ th {
     font-weight: 700;
 }
 
-/* Footer menor e mais discreto */
+/* Footer */
 footer {
     font-size: 0.88rem;
     line-height: 1.4;
@@ -149,168 +160,8 @@ footer {
 @media (max-width: 900px) {
     h1 { font-size: 1.6rem; padding: 14px 18px; }
     table { font-size: 0.95rem; }
-    img { max-width: 95vw; }
-    h1, p, address, table, ul, footer, img { width: calc(100% - 32px); }
-}
-
-/* Pequenos ajustes de espaçamento */
-p + p, address + p, h3 + p {
-    margin-top: 8px;
-}
-CSScat > /workspaces/Curriculo-Gabriel/style.css <<'CSS'
-:root {
-    /* Paleta */
-    --primary: #0057B8;
-    --primary-2: #4DA8FF;
-
-    /* Cards escuros translúcidos para legibilidade sobre fundo gradiente PNG */
-    --card-bg: rgba(3,16,30,0.66);
-    --card-text: #ffffff;
-    --muted: rgba(255,255,255,0.82);
-    --shadow: rgba(0,0,0,0.36);
-    --radius: 12px;
-}
-
-html, body {
-    height: 100%;
-}
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    /* Mantém a imagem de fundo (gradiente em PNG) */
-    background-image: url(background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: var(--card-text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 28px 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Aplica o "card" escuro translúcido para melhorar contraste */
-h1,
-p,
-address,
-table,
-ul,
-footer,
-img {
-    background: var(--card-bg);
-    color: var(--card-text);
-    border-radius: var(--radius);
-    box-shadow: 0 8px 28px var(--shadow);
-    max-width: 980px;
-    width: calc(100% - 40px);
-    margin: 18px auto;
-    padding: 16px 20px;
-}
-
-/* Cabeçalho com destaque, texto branco */
-h1 {
-    background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));
-    color: var(--card-text);
-    padding: 20px 28px;
-    font-size: 2rem;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-/* Links: azul para identidade, mas com boa visibilidade sobre card escuro */
-a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-    display: inline-block;
-    margin: 12px 0;
-}
-
-a:visited { color: #003f7f; }
-
-a:focus,
-a:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.18);
-    border-radius: 6px;
-}
-
-/* Botões: mantêm azul, com sombra mais forte para destacar sobre fundo escuro */
-button {
-    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 22px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.42);
-}
-
-button:focus,
-button:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.18);
-}
-
-/* Imagens: mantém padding e sombra; fundo das imagens fica mais leve */
-img {
-    display: block;
-    max-width: 90vw;
-    height: auto;
-    margin: 18px auto;
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.04);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.38);
-}
-
-/* Tabelas com cores claras sobre o card escuro */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 0.98rem;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid rgba(255,255,255,0.04);
-    text-align: center;
-    color: var(--card-text);
-    background: rgba(255,255,255,0.02);
-}
-
-th {
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    color: var(--muted);
-    font-weight: 700;
-}
-
-/* Footer menor e mais discreto */
-footer {
-    font-size: 0.88rem;
-    line-height: 1.4;
-    padding: 12px 16px;
-}
-
-/* Responsividade */
-@media (max-width: 900px) {
-    h1 { font-size: 1.6rem; padding: 14px 18px; }
-    table { font-size: 0.95rem; }
-    img { max-width: 95vw; }
-    h1, p, address, table, ul, footer, img { width: calc(100% - 32px); }
+    .img-cert { max-width: 80vw; }
+    h1, p, address, table, ul, footer { width: calc(100% - 32px); }
 }
 
 /* Pequenos ajustes de espaçamento */
