@@ -169,3 +169,18 @@ footer {
 p + p, address + p, h3 + p {
     margin-top: 8px;
 }
+
+/* Links no topo da página (filhos diretos de body) */
+body > a {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+body > a:hover {
+    color: #cfe9ff;
+}
+body > a:focus,
+body > a:focus-visible {
+    outline: 3px solid rgba(77,168,255,0.22);
+    border-radius: 6px;
+}
