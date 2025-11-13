@@ -22,9 +22,8 @@ body {
     /* Usa a imagem PNG como está (tamanho normal, não cover) */
     background-image: url(background.png);
     background-size: cover;
-    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     color: var(--card-text);
     display: flex;
     flex-direction: column;
