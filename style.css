@@ -1,9 +1,7 @@
 :root {
-   
     --primary: #0057B8;
     --primary-2: #4DA8FF;
 
-   
     --card-bg: rgba(3,16,30,0.66);
     --card-text: #ffffff;
     --muted: rgba(255,255,255,0.82);
@@ -11,15 +9,12 @@
     --radius: 12px;
 }
 
-html, body {
-    height: 100%;
-}
+html, body { height: 100%; }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
-    
     background-image: url(background.png);
     background-size: cover;
     background-attachment: fixed;
@@ -35,13 +30,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-h1,
-p,
-address,
-table,
-ul,
-footer {
+/* Cartões consistentes para blocos de conteúdo */
+.card {
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: var(--radius);
@@ -52,17 +42,28 @@ footer {
     padding: 16px 20px;
 }
 
-
+/* Cabeçalho */
 h1 {
     background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.18));
     color: var(--card-text);
     padding: 20px 28px;
     font-size: 2rem;
     text-align: center;
+    border-radius: var(--radius);
     border: 1px solid rgba(255,255,255,0.06);
+    max-width: 980px;
+    width: calc(100% - 40px);
+    margin: 18px auto;
 }
 
+/* Títulos secundários dentro de cartões (sem fundo separado) */
+.card h2,
+.card h3 {
+    margin-top: 0;
+    color: var(--card-text);
+}
 
+/* Links e acessibilidade */
 a {
     text-decoration: none;
     color: var(--primary);
@@ -70,16 +71,18 @@ a {
     display: inline-block;
     margin: 12px 0;
 }
-
 a:visited { color: #003f7f; }
+a:focus, a:focus-visible { outline: 3px solid rgba(77,168,255,0.18); border-radius: 6px; }
 
-a:focus,
-a:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.18);
-    border-radius: 6px;
+/* Links no topo (filhos diretos de body) visíveis sobre o fundo */
+body > a {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
+body > a:hover { color: #cfe9ff; }
 
-
+/* Botões */
 button {
     background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
     color: #fff;
@@ -91,96 +94,29 @@ button {
     box-shadow: 0 8px 18px rgba(0,0,0,0.35);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
+button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.42); }
+button:focus, button:focus-visible { outline: 3px solid rgba(77,168,255,0.18); }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.42);
-}
+/* Imagens - estilo base (sombra, padding). Tamanhos controlados por classes. */
+img { display: block; height: auto; margin: 18px auto; padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.04); box-shadow: 0 10px 30px rgba(0,0,0,0.38); }
+.img-small { max-width: 160px; width: auto; padding: 6px; }
+.img-cert  { max-width: 480px; width: 100%; }
 
-button:focus,
-button:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.18);
-}
+/* Tabelas */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.98rem; overflow: hidden; border-radius: 8px; }
+th, td { padding: 10px; border: 1px solid rgba(255,255,255,0.04); text-align: center; color: var(--card-text); background: rgba(255,255,255,0.02); }
+th { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); color: var(--muted); font-weight: 700; }
 
+/* Footer */
+footer { font-size: 0.88rem; line-height: 1.4; padding: 12px 16px; color: var(--card-text); }
 
-img {
-    display: block;
-    height: auto;
-    margin: 18px auto;
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.04);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.38);
-}
-
-
-.img-small {
-    max-width: 160px;
-    width: auto;
-    padding: 6px;
-}
-
-
-.img-cert {
-    max-width: 480px;
-    width: 100%;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 0.98rem;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid rgba(255,255,255,0.04);
-    text-align: center;
-    color: var(--card-text);
-    background: rgba(255,255,255,0.02);
-}
-
-th {
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    color: var(--muted);
-    font-weight: 700;
-}
-
-
-footer {
-    font-size: 0.88rem;
-    line-height: 1.4;
-    padding: 12px 16px;
-}
-
-
+/* Responsividade */
 @media (max-width: 900px) {
     h1 { font-size: 1.6rem; padding: 14px 18px; }
     table { font-size: 0.95rem; }
     .img-cert { max-width: 80vw; }
-    h1, p, address, table, ul, footer { width: calc(100% - 32px); }
+    .card, h1 { width: calc(100% - 32px); }
 }
 
-
-p + p, address + p, h3 + p {
-    margin-top: 8px;
-}
-
-
-body > a {
-    color: #ffffff;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-}
-body > a:hover {
-    color: #cfe9ff;
-}
-body > a:focus,
-body > a:focus-visible {
-    outline: 3px solid rgba(77,168,255,0.22);
-    border-radius: 6px;
-}
+/* Pequenos ajustes de espaçamento */
+p + p, address + p, h3 + p { margin-top: 8px; }
