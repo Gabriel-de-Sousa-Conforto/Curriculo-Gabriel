@@ -21,7 +21,7 @@ body {
     min-height: 100vh;
     /* Usa a imagem PNG como está (tamanho normal, não cover) */
     background-image: url(background.png);
-    background-size: full;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     color: var(--card-text);
